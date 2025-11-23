@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Generator</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>QR Code Generator</h1>
+        
+        <div class="input-section">
+            <!-- QR Type Selection -->
+            <div class="qr-type-selector">
+                <label>
+                    <input type="radio" name="qr-type" value="url" checked> URL
+                </label>
+                <label>
+                    <input type="radio" name="qr-type" value="whatsapp"> WhatsApp
+                </label>
+            </div>
+
+            <!-- URL Input (default) -->
+            <div id="url-input" class="input-group">
+                <input type="text" id="qr-text" placeholder="Enter URL (e.g., https://www.example.com)" value="https://www.example.com">
+            </div>
+
+            <!-- WhatsApp Input (hidden by default) -->
+            <div id="whatsapp-input" class="input-group hidden">
+                <div class="whatsapp-fields">
+                    <select id="country-code">
+                        <option value="">Select Country</option>
+                        <option value="+1">USA (+1)</option>
+                        <option value="+44">UK (+44)</option>
+                        <option value="+27">South Africa (+27)</option>
+                        <option value="+91">India (+91)</option>
+                        <option value="+86">China (+86)</option>
+                        <option value="+49">Germany (+49)</option>
+                        <option value="+33">France (+33)</option>
+                        <option value="+81">Japan (+81)</option>
+                        <option value="+7">Russia (+7)</option>
+                        <option value="+55">Brazil (+55)</option>
+                        <option value="+52">Mexico (+52)</option>
+                        <option value="+61">Australia (+61)</option>
+                        <option value="+64">New Zealand (+64)</option>
+                        <option value="+234">Nigeria (+234)</option>
+                        <option value="+20">Egypt (+20)</option>
+                        <option value="+254">Kenya (+254)</option>
+                        <!-- Add more countries as needed -->
+                    </select>
+                    <input type="tel" id="whatsapp-number" placeholder="Phone number (without country code)">
+                    <input type="text" id="whatsapp-message" placeholder="Optional pre-filled message">
+                </div>
+            </div>
+
+            <div class="button-group">
+                <button id="generate-btn">Generate QR Code</button>
+                <button id="download-btn" disabled>Download QR Code</button>
+            </div>
+        </div>
+
+        <div class="qr-container">
+            <div id="qr-code"></div>
+            <p id="error-message" class="hidden">Please enter valid information!</p>
+            <p id="whatsapp-preview" class="hidden"></p>
+        </div>
+
+        <div class="features">
+            <div class="color-picker">
+                <label for="qr-color">QR Color:</label>
+                <input type="color" id="qr-color" value="#000000">
+            </div>
+            <div class="color-picker">
+                <label for="bg-color">Background:</label>
+                <input type="color" id="bg-color" value="#ffffff">
+            </div>
+            <div class="size-control">
+                <label for="qr-size">Size:</label>
+                <select id="qr-size">
+                    <option value="128">Small (128px)</option>
+                    <option value="256" selected>Medium (256px)</option>
+                    <option value="400">Large (400px)</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
